@@ -19,6 +19,7 @@
             const gotCitiesCSV = "King's Landing,Braavos,Volantis,Old Valyria,Free Cities,Qarth,Meereen";
             const bestThing = "The best thing about a boolean is even if you are wrong you are only off by a bit";
             const gotArray = gotCitiesCSV.split(",");
+            const bestArray = bestThing.split(" ");
 
             function printResult(result) {
                 let newContent = document.createElement("div");
@@ -46,14 +47,14 @@
 
             //Step 5 - Display the first 5 cities in lotrCitiesArray
 
-            printResult(lotrCitiesArray.slice(0,5));
+            printResult(lotrCitiesArray.slice(0, 5));
             console.log(lotrCitiesArray);
 
             //Step 6 - Display the last 5 cities in lotrCitiesArray
 
             printResult(lotrCitiesArray.slice(-5));
             console.log(lotrCitiesArray);
-            
+
             //Step 7 - Display the 3rd to 5th city in lotrCitiesArray
 
             printResult(lotrCitiesArray.slice(3, -2));
@@ -75,7 +76,7 @@
             console.log(lotrCitiesArray);
 
             //Step 11 - Using splice, rename "Dead Marshes" to "Deadest Marshes" in lotrCitiesArray
-    
+
             printResult(lotrCitiesArray.splice(5, 1, 'Deadest Marshes'));
             console.log(lotrCitiesArray);
 
@@ -89,7 +90,7 @@
 
             //Step 14 - Using slice, display characters between the 23rd and 38th position of bestThing (i.e., "boolean is even"
 
-            printResult(bestThing.slice(23,38));
+            printResult(bestThing.slice(23, 38));
 
             //Step 15 - Repeat #13 using substring instead of slice.
 
@@ -108,15 +109,63 @@
             printResult(bestThing.indexOf('bit'));
 
             //Step 19 - Find and display all cities from gotCitiesCSV  that use double vowels ("aa","ee", etc.)
-
+            let step19 = document.createElement("div");
+            let vowels = ["aa", "ee", "oo", "ii", "uu"]
             console.log(gotArray);
-            for (city of gotArray){
-                
+            for (let i = 0; i < gotArray.length; i++) {
+                for (let j = 0; j < vowels.length; j++) {
+                    if (gotArray[i].includes(vowels[j])) {
+                        let newContent = document.createTextNode(String(gotArray[i]) + " ");
+                        step19.appendChild(newContent);
+                    }
+                }
+                destination.appendChild(step19);
+                console.log(gotArray[i]);
             }
 
             //Step 20 - Find and display all cities from lotrCitiesArray that end with "or"
+
+            let step20 = document.createElement("div");
+            console.log(lotrCitiesArray);
+            for (let i = 0; i < lotrCitiesArray.length; i++) {
+                if (lotrCitiesArray[i].substring(lotrCitiesArray[i].length - 2) === "or") {
+                    let newContent = document.createTextNode(String(lotrCitiesArray[i]) + " ");
+                    step20.appendChild(newContent);
+                    console.log(newContent);
+                }
+                destination.appendChild(step20);
+
+            }
+
             //Step 21 - Find and display all the words in bestThing that start with a "b"
+
+            let step21 = document.createElement("div");
+            console.log(bestArray);
+            for (let i = 0; i < bestArray.length; i++) {
+                if (bestArray[i].substring(0, 1) === "b") {
+                    let newContent = document.createTextNode(String(bestArray[i]) + " ");
+                    step21.appendChild(newContent);
+                    console.log(newContent);
+                }
+                destination.appendChild(step21);
+
+            }
+
             //Step 22 - Display "Yes" or "No" if lotrCitiesArray includes "Mirkwood"
+
+            let step22 = document.createElement("div");
+            console.log(lotrCitiesArray);
+            
+            if (lotrCitiesArray.includes("Mirkwood")) {
+                document.write("yes");
+            }
+            else{
+                document.write("no");
+            }
+            destination.appendChild(step22);
+            
+
+
             //Step 23 - Display "Yes" or "No" if lotrCitiesArray includes "Hollywood"
             //Step 24 - Display the index of "Mirkwood" in lotrCitiesArray
             //Step 25 - Find and display the first city in lotrCitiesArray that has more than one word
